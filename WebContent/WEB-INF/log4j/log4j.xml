@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%5p %d [%t] (%F:%L) (%M) - %m%n" />
+		</layout>
+	</appender>
+	<appender name="dailyroll" class="org.apache.log4j.rolling.RollingFileAppender">
+		<param name="Threshold" value="DEBUG" />
+		<!-- <param name="File" value="/waslogs1/vfoneLog/salescomm/comm3.log" 
+			/> -->
+		<!--<param name="File" value="/home/himanshu/logs/ServerLogs/comm3.log" />-->
+		<rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+   			<param name="fileNamePattern" value="/mobicule/testLogs/AppInternal-%d{yyyy-MM-dd-HH_mm_ss}.log" />
+  		</rollingPolicy>
+		<!--<param name="MaxFileSize" value="10KB" />-->
+		<triggeringPolicy class="org.apache.log4j.rolling.SizeBasedTriggeringPolicy">
+   			<param name="MaxFileSize" value="10000" />
+  		</triggeringPolicy>
+		<!--<param name="MaxBackupIndex" value="40" />-->
+		<!--<param name="DatePattern" value=".yyyy-MM-dd" />-->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%t] %5p %m%n" />
+		</layout>
+	</appender>
+
+	<logger name="com.apache" additivity="false">
+		<level value="OFF" />
+
+	</logger>
+
+	<logger name="com.restaurant" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="dailyroll" />
+		<appender-ref ref="console" />
+	</logger>
+
+	<root>
+		<priority value="DEBUG" />
+		<appender-ref ref="dailyroll" />
+		<appender-ref ref="console" />
+	</root>
+</log4j:configuration>

@@ -1,0 +1,334 @@
+<title>Food Order Online in Pune</title>
+<meta name="description"
+	content="Order Fast Food online with a few clicks and avail some amazing discounts at Pune, Yaradadhaba" />
+<meta property="og:description"
+	content="Order Fast Food online with a few clicks and avail some amazing discounts at Pune, Yaradadhaba" />
+
+<script src="js/jquery-sticky-div.js"></script>
+<script src="js/jquery.sticky.js"></script>
+<script src="js/main.js"></script>
+<script src="js/scroll-top.js"></script>
+
+
+<!--
+    Header start 
+	============================== -->
+<nav id="navigation">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="block">
+					<nav class="navbar navbar-default">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed"
+								data-toggle="collapse"
+								data-target="#bs-example-navbar-collapse-1">
+								<span class="sr-only">Toggle navigation</span> <span
+									class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" ui-sref="app"> <img
+								src="images/logo.png" alt="Logo">
+							</a>
+						</div>
+
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse"
+							id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav navbar-right" id="top-nav">
+								<li class="active"><a href="#" ui-sref="app"><i
+										class="fa fa-home"></i> Home</a></li>
+							</ul>
+						</div>
+						<!-- /.navbar-collapse -->
+				</div>
+				<!-- /.container-fluid -->
+</nav>
+</div>
+</div>
+<!-- .col-md-12 close -->
+</div>
+<!-- .row close -->
+</div>
+<!-- .container close -->
+</nav>
+<!-- header close -->
+<!--
+    price start
+    ============================ -->
+<div ng-controller="MenuController">
+	<div ng-controller="CartController">
+		<section id="price">
+			<div class="container">
+				<div class="row " style="padding-top: 5em">
+					<div class="col-md-12">
+						<div class="block" style="margin-top: -200px">
+							<div class="pricing-list">
+								<div class="row">
+									<div class="hidden-xs hidden-sm col-md-3">
+										<div id="sticky-anchor_category"></div>
+										<div class="info fixed_to_top scrollbar" id="sticky_category"
+											style="width: 170px; height: 360px">
+											<ul style="color: black">
+												<li style="text-transform: uppercase; padding: 0.5em;"
+													ng-repeat="(key , value) in dbDishes"><a href=""
+													ng-click="gotoElement(key)" style="color: black">{{key}}</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="col-xs-12 col-md-9 col-lg-5">
+										<div class="border-menu"
+											style="padding-left: 1em; font-size: medium; font-weight: bold;">
+											OFFERS
+											<div
+												style="border-top: 1px dotted #C9C9C9; font-weight: normal; padding-bottom: 1em">
+												Flat 20% OFF on all orders above Rs.500 + 15% Cashback via
+												Mobikwik!</div>
+										</div>
+										<div class="border-menu"
+											style="padding-left: 1em; font-size: medium; font-weight: bold; margin-top: 1em;">
+											IMPORTANT NOTE
+											<div
+												style="border-top: 1px dotted #C9C9C9; font-weight: normal; padding-bottom: 1em">
+												No delivery charge for orders above Rs 250.</div>
+										</div>
+										<div class="border-menu" style="margin-top: 1em;">
+											<ul>
+												<li style="padding-left: 1em; padding-right: 1em"
+													ng-repeat="(key , value) in dbDishes">
+													<div class="item">
+														<div id="{{key}}" class="item-title">
+															<strong>{{key}}</strong>
+															<div class="border-bottom"></div>
+														</div>
+														<ul ng-show="!isArray(value)">
+															<li style="padding-left: 1em; padding-right: 1em"
+																ng-repeat="(key , value) in value">
+																<div class="item">
+																	<div class="item-title">
+																		<strong style="font-weight: bold">{{key}}</strong>
+																	</div>
+																	<ul>
+																		<li style="padding-left: 1em; padding-right: 1em"
+																			ng-repeat="dish in value">
+																			<div class="item">
+																				<div class="item-title">
+																					<div class="row">
+																						<div class="col-xs-8" style="font-size: 17px;">
+																							{{dish.name}}</div>
+																						<div class="col-xs-4">
+																							<span style="align: right"> &nbsp; <a
+																								style="color: #000" ng-click="addItem(dish)"
+																								href=""><i class="fa fa-plus-square"></i></a></span> <span
+																								style="color: #000"><i class="fa fa-inr"></i>{{dish.price}}</span>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</li>
+																	</ul>
+																</div>
+															</li>
+														</ul>
+														<ul ng-show="isArray(value)">
+															<li style="padding-left: 1em; padding-right: 1em"
+																ng-repeat="dish in value">
+																<div class="item">
+																	<div class="item-title">
+																		<div class="row">
+																			<div class="col-xs-8" style="font-size: 16px">
+																				{{dish.name}}</div>
+																			<div class="col-xs-4">
+																				<span style="align: right"> &nbsp; <a
+																					style="color: #000" ng-click="addItem(dish)"
+																					href=""><i class="fa fa-plus-square"></i></a></span> <span
+																					style="color: #000"><i class="fa fa-inr"></i>{{dish.price}}</span>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</li>
+														</ul>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="hidden-xs hidden-sm hidden-md col-lg-4">
+										<div id="sticky-anchor_cart"></div>
+										<div class="info border-menu" id="sticky_cart"
+											style="width: 335px">
+											<form name="cart">
+												<div class="cartScrollbar" id="sticky_category"
+													ng-init="cartErrorMessage">
+													<span style="width: 335px"><h4
+															style="color: RED; font-weight: bold; text-align: center">{{cartErrorMessage}}</h4></span>
+													<ul style="font-size: medium;">
+														<li style="padding: 0.5em;" ng-repeat="item in cartArray">
+															<div class="row">
+																<div class="col-lg-6">{{item.name}}</div>
+																<div class="col-lg-3">
+																	<a href="" ng-click="minusOneItem(item)"
+																		style="color: #000"> <i class="fa fa-minus"
+																		style="font-size: small"></i></a> <span
+																		style="width: 20px; height: 18px">{{item.quantity}}</span>
+																	<a href="" ng-click="plusOneItem(item)"
+																		style="color: #000"> <i class="fa fa-plus"
+																		style="font-size: small"></i>
+																	</a>
+																</div>
+																<div lass="col-lg-3">
+																	<i class="fa fa-inr"></i> {{item.price *
+																	item.quantity}}
+																</div>
+															</div>
+														</li>
+													</ul>
+												</div>
+												<span
+													style="padding-left: 1em; font-size: medium; font-weight: bold;">
+													Total <span style="float: right; padding-right: 1em"
+													ng-init="total"> <i style="margin-left: .5em"
+														class="fa fa-inr"></i> {{total}}
+
+												</span>
+												</span> <br /> <span
+													style="padding-left: 1em; font-size: medium; font-weight: bold;"
+													ng-init="deliveryCharges"> Delivery <span
+													style="float: right; padding-right: 1em"> <i
+														style="margin-left: .5em" class="fa fa-inr"></i>
+														{{deliveryCharges}}
+
+												</span>
+												</span>
+												<div
+													style="height: 52px; background-color: gray; line-height: 50px; vertical-align: middle; color: #000; font-weight: bold;">
+													<span style="padding-left: 1em"> CHECK-OUT <span
+														style="padding: .5em"> MIN SUB-TOTAL 150</span><a
+														style="color: #000" ng-click="clearCart()"> clear cart</a>
+													</span>
+													<div style="float: right; padding-right: 1em;margin-top: 1em">
+														<a href="" ng-click="validateCartBeforeCheckOut()"
+															style="color: #000"><i class="fa fa-sign-out"></i></a>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- .col-md-12 close -->
+				</div>
+				<!-- .row close -->
+				<div class="row">
+					<nav id="navigation" class="navbar navbar-fixed-bottom">
+						<div class="container">
+							<div class="row hidden-lg">
+								<div class="col-md-12">
+									<div style="padding-top: 1em">
+										<div class="row"
+											style="color: #000; background-color: gray; height: 50px; line-height: 50px; vertical-align: middle; font-weight: bold;">
+											<div class="hidden-lg col-xs-5" ng-init="total">
+												Total <i class="fa fa-inr"></i> {{total}}
+											</div>
+											<div class="hidden-lg col-xs-2">
+												<a href="#" class="scrollToTop"><i
+													class="fa fa-arrow-up"></i></a>
+											</div>
+											<div class="hidden-lg col-xs-5">
+												<span style="float: right; padding-right: 1em"
+													ng-init="totalItems"> <i data-toggle="modal"
+													data-target="#myModal" class="fa fa-shopping-cart "></i>
+													{{totalItems}} <span style="padding-left: 2em"></span> <a
+													href="" ng-click="validateCartBeforeCheckOut()"
+													style="color: #000"><i class="fa fa-sign-out"></i></a>
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</nav>
+				</div>
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+					aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="vertical-alignment-helper">
+						<div class="modal-dialog vertical-align-center">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">
+										<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+
+									</button>
+									<h4 class="modal-title" id="myModalLabel">
+										<i class="fa fa-shopping-cart "></i> Cart
+									</h4>
+
+								</div>
+								<div class="modal-body">
+									<div class="info border-menu" id="sticky_cart"
+										style="width: inherit">
+										<form name="cart">
+											<div style="overflow-y: scroll; max-height: 90px;"
+												id="sticky_category" ng-init="cartErrorMessage">
+												<span style="width: inherit"><h4
+														style="color: RED; font-weight: bold; text-align: center">{{cartErrorMessage}}</h4></span>
+												<ul style="font-size: medium;">
+													<li style="padding: 0.5em;" ng-repeat="item in cartArray">
+														<div class="row">
+															<div class="col-xs-5">{{item.name}}</div>
+															<div class="col-xs-4">
+																<a href="" ng-click="minusOneItem(item)"
+																	style="color: #000"> <i class="fa fa-minus"
+																	style="font-size: small"></i></a> <input
+																	style="width: 20px; height: 18px" type="text"
+																	value="{{item.quantity}}" readonly /> <a href=""
+																	ng-click="plusOneItem(item)" style="color: #000"> <i
+																	class="fa fa-plus" style="font-size: small"></i>
+																</a>
+															</div>
+															<div lass="col-xs-3">
+																<i class="fa fa-inr"></i> {{item.price * item.quantity}}
+															</div>
+														</div>
+													</li>
+												</ul>
+											</div>
+											<span
+												style="padding-left: 1em; font-size: medium; font-weight: bold;">
+												Total <span style="float: right; padding-right: 1em"
+												ng-init="total"> <i style="margin-left: .5em"
+													class="fa fa-inr"></i> {{total}}
+
+											</span>
+											</span> <br /> <span
+												style="padding-left: 1em; font-size: medium; font-weight: bold;"
+												ng-init="deliveryCharges"> Delivery <span
+												style="float: right; padding-right: 1em"> <i
+													style="margin-left: .5em" class="fa fa-inr"></i>
+													{{deliveryCharges}}
+
+											</span>
+											</span> </span>
+										</form>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- .containe close -->
+		</section>
+		<!-- #price close -->
+	</div>
+</div>
